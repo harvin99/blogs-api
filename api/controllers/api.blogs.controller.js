@@ -1,9 +1,7 @@
 const Blog = require("../../models/Blog.model")
-
-module.exports.getBlogs = async (req, res) => {
+module.exports.getBlogs = (req, res) => {
     try {
-        const blogs =  await Blog.find()
-        res.status(200).json({blogs : blogs})
+        res.status(200).json(res.paginatedResults)
     } catch (error) {
         console.log(error.message)
         res.status(404).json({error : "Not found !"})
